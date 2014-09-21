@@ -100,14 +100,6 @@ void movement(int x1, int y1, int x2, int y, bool precision){
 	}*/
 }
 
-void autoMovementPower(){
-
-}
-
-void autoMovementTime(){
-
-}
-
 void stopAllMotors(){
 	movement(0, 0, 0, 0, false);
 }
