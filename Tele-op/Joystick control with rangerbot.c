@@ -56,7 +56,7 @@ int speed;
 
 void initializeRobot(){
   	threshold = 10; //to avoid unnecessary movement.
-  	fullspeed = -100; //speed of robot without precision mode
+  	fullspeed = -200; //speed of robot without precision mode
   	precisionspeed = -10; //speed of robot in precision mode
   	speed = fullspeed;
   	usePrecision = false;
