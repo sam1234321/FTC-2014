@@ -74,30 +74,16 @@ void initializeRobot(){
 //TODO: Make better motor functions involving the tMotor object
 void movement(int x1, int y1, int x2, int y, bool precision){
 
-	//if(!precision){
-		if(abs(y1) > threshold){
-			motor[motorE] = (y1 * speed) / 127;
-		} else {
-				motor[motorE] = 0;
-		}
-		if(abs(y2) > threshold){
-			motor[motorD] = (y2 * speed) / 127;
-		}	else {
-			motor[motorD] = 0;
-		}
-	/* remove this code if code above works with precison mode (It should!!)
+	if(abs(y1) > threshold){
+		motor[motorE] = (y1 * speed) / 127;
 	} else {
-		if(abs(y1) > threshold){
-			motor[motorE] = (y1 * precisionspeed) / 127;
-		} else {
-				motor[motorE] = 0;
-		}
-		if(abs(y2) > threshold){
-			motor[motorD] = (y2 * precisionspeed) / 127;
-		}	else {
-			motor[motorD] = 0;
-		}
-	}*/
+			motor[motorE] = 0;
+	}
+	if(abs(y2) > threshold){
+		motor[motorD] = (y2 * speed) / 127;
+	}	else {
+		motor[motorD] = 0;
+	}
 }
 
 void stopAllMotors(){
