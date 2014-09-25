@@ -18,10 +18,10 @@ void initializeRobot(){
 void movement(int x1, int y1, int x2, int y2){
 	// we are only using x2 and y2 for the actual movement, x1 and y1 are for rotation. Optional, but reccomended and useful.
 	if(abs(y2) > threshold){ // make sure joystick is not in dead zone. I know, it only checks y2, but it is long a tedious to check for more, I'll do it later. ------------------------------------TODO-----------------------------------------------------------
-		motor[topright] = y2 - x1 - x2;		// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
-		motor[topleft] = y2 - x1 + x2;
-		motor[bottomright] = y2 + x1 + x2;
-		motor[bottomleft] = y2 + x1 -x2;
+		motor[topright] = ((y2 * 100) / 127) - ((x1 * 100) / 127) - ((x2 * 100) / 127);		// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
+		motor[topleft] = ((y2 * 100) / 127) - ((x1 * 100) / 127) + ((x2 * 100) / 127);
+		motor[bottomright] = ((y2 * 100) / 127) + ((x1 * 100) / 127) + ((x2 * 100) / 127);
+		motor[bottomleft] = ((y2 * 100) / 127) + ((x1 * 100) / 127) - ((x2 * 100) / 127);
 	}
 	//This code isn't perfect. It obviously goes over the 100 power limit of a motor, but it still should work. It won't burn out motors because robotc sets the value to 100, even if it is higher.
 }
