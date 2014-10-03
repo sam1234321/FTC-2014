@@ -18,7 +18,7 @@ task main()
   int threshold = 15; //to avoid unnecessary movement(both controllers)
   while(true) //infinite loop
   {
-	getJoystickSettings(joystick); //retrieves data from the joystick
+	getJoystickSettings(joystick); //retrieves data from the joysticks
 	j2y1 = joystick.joy2_y1;
 	j2y2 = joystick.joy2_y2;
 	j2x1 = joystick.joy2_x1;
@@ -45,12 +45,48 @@ task main()
 	}
 	//Detection for buttons such as a, b, x, y
 	int dis_cm = 15;
- 
+        { 
+	while(joystick.joy2Tophat == 0);    //arm movement
+	  while(joy2Btn(7) == 0);
+	    while(joy2Btn(6) == 0);
+	       moter[moterF] = 60;
+        }
+	{
+	while(joystick.joy2Tophat == 0);
+	  while(joy2Btn(7) == 0);
+	    while(joy2Btn(6) == 1);
+	       moter[moterF] = 20;
+	}
+	{
+	while(joystick.joy2Tophat == 0);
+	  while(joy2Btn(7) == 1);
+	    while(joy2Btn(6) == 0);
+	       moter[moterF] = 100;
+	}       
+	{
+	while(joystick.joy2Tophat == 4);
+	  while(joy2Btn(7) == 0);
+	    while(joy2Btn(6) == 0);
+	       moter[moterF] = -60;       
+	}
+	{
+	while(joystick.joy2Tophat == 4);
+	  while(joy2Btn(7) == 0);
+	    while(joy2Btn(6) == 1);
+	       moter[moterF] = -20;       
+	}
+	{
+	while(joystick.joy2Tophat == 4);
+	  while(joy2Btn(7) == 1);
+	    while(joy2Btn(6) == 0);
+	       moter[moterF] = -100;       
+	
+	}
 	/*if(joy1Btn(7) == 1){
 	while(SensorValue[S4] > dis_cm)
 	motor[motorD] = 50;
 	motor[motorE] = 50;*/   //ultrasonic code. do we need it?
-   }
+  /* }
  
 	if(joy1Btn(4) == 1){
 	wait1Msec(10);
@@ -64,7 +100,7 @@ task main()
    } else if(joy1Btn(1) == 1){
      wait1Msec(10);
     servo[servo1] = servo[servo1]+mSpeed;
-   }
+   }*/
    getJoystickSettings(joystick); //retrieves data from the joystick
 
 
