@@ -25,10 +25,10 @@ void initializeRobot(){
 void movement(int x1, int y1, int x2, int y2){
 	// we are only using x2 and y2 for the actual movement, x1 and y1 are for rotation. Optional, but reccomended and usef	ul.
 	if(abs(y2) > threshold || abs(x2) > threshold || abs(x1) > threshold){ // make sure joystick is not in dead zone. I know, it only checks y2, but it is long a tedious to check for more, I'll do it later. ------------------------------------TODO-----------------------------------------------------------
-		motor[topRight] = ((y2 * 100) / 127) - ((x1 * 100) / 127) - ((x2 * 100) / 127);		// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
-		motor[topLeft] = ((y2 * 100) / 127) - ((x1 * 100) / 127) + ((x2 * 100) / 127);
-		motor[bottomRight] = ((y2 * 100) / 127) + ((x1 * 100) / 127) + ((x2 * 100) / 127);
-		motor[bottomLeft] = ((y2 * 100) / 127) + ((x1 * 100) / 127) - ((x2 * 100) / 127);
+		motor[topLeft] = ((y2 * 100) / 127) - ((x1 * 100) / 127) - ((x2 * 100) / 127);		// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
+		motor[topRight] = ((y2 * 100) / 127) - ((x1 * 100) / 127) + ((x2 * 100) / 127);
+		motor[bottomLeft] = ((y2 * 100) / 127) + ((x1 * 100) / 127) + ((x2 * 100) / 127);
+		motor[bottomRight] = ((y2 * 100) / 127) + ((x1 * 100) / 127) - ((x2 * 100) / 127);
 	}
 }
 
