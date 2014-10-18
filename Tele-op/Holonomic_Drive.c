@@ -16,13 +16,13 @@ void initializeVariables(){
 	threshold = 10; // Just to keep unescessary movement.
 }
 
-// this is run before the main loop
+// this is run before the main loop, to intitialize things for startup I. E. set servos to preffered starting positions
 void initializeRobot(){
 	initializeVariables();
 }
 
 // main method for movement.
-void movement(int x1, int y1, int x2, int y2){`
+void movement(int x1, int y1, int x2, int y2){
 	// we are only using x2 and y2 for the actual movement, x1 and y1 are for rotation. Optional, but reccomended and usef	ul.
 	if(abs(y2) > threshold || abs(x2) > threshold || abs(x1) > threshold){ // make sure joystick is not in dead zone. I know, it only checks y2, but it is long a tedious to check for more, I'll do it later. ------------------------------------TODO-----------------------------------------------------------
 		motor[topRight] = ((y2 * 100) / 127) - ((x1 * 100) / 127) - ((x2 * 100) / 127);		// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
@@ -30,36 +30,48 @@ void movement(int x1, int y1, int x2, int y2){`
 		motor[bottomRight] = ((y2 * 100) / 127) + ((x1 * 100) / 127) + ((x2 * 100) / 127);
 		motor[bottomLeft] = ((y2 * 100) / 127) + ((x1 * 100) / 127) - ((x2 * 100) / 127);
 	}
-	else(
 }
 
-void movement(int topRightP, int topLeftP, int bottomRightP, int bottomLeftP){
-	// we are only using x2 and y2 for the actual movement, x1 and y1 are for rotation. Optional, but reccomended and usef	ul.
-	if(abs(y2) > threshold || abs(x2) > threshold || abs(x1) > threshold){ // make sure joystick is not in dead zone. I know, it only checks y2, but it is long a tedious to check for more, I'll do it later. ------------------------------------TODO-----------------------------------------------------------
-		motor[topRight] = ((y2 * 100) / 127) - ((x1 * 100) / 127) - ((x2 * 100) / 127);		// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
-		motor[topLeft] = ((y2 * 100) / 127) - ((x1 * 100) / 127) + ((x2 * 100) / 127);
-		motor[bottomRight] = ((y2 * 100) / 127) + ((x1 * 100) / 127) + ((x2 * 100) / 127);
-		motor[bottomLeft] = ((y2 * 100) / 127) + ((x1 * 100) / 127) - ((x2 * 100) / 127);
-	}
-	else(
+//same movement methods, but with parameters for power instead of joystick position
+void movementPower(int topRightP, int topLeftP, int bottomRightP, int bottomLeftP){
+
+		motor[topRight] = topRightP;	// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
+		motor[topLeft] = topLeftP;
+		motor[bottomRight] = bottomRightP;
+		motor[bottomLeft] = bottomLeftP;
 }
 
 // Autonomous Methods go here
 
-void move(int topRight, int topLeft, int bottomRight, int bottomLeft){
+void moveForward(int power){
+	movementPower(100, 100, 100, 100);
+}
 
+void stopMotors(bool stopTopRight, bool stopTopLeft, bool stopBottomRight, bool stopBottomLeft){
+	if(stopTopRight){
+		motors[topRight] = 0;
+	}
+	if(stopTopLeft){
+		motors[topLeft] = 0;
+	}
+	if(stopBottomRight){
+		motors[bottomRight] = 0;
+	}
+	if(stopBottomLeft){
+		motors[bottomLeft] = 0;
+	}
 }
 
 task main(){
-	intializeRobot();
+	initializeRobot();
 
 	while(true){
 		getJoystickSettings(joystick); // this should be run before joystick detection, since, well, the whole tele-op depends on the joystick.
-		int y1 = Joystick.joy1_y1; int y2 = Joystick.joy1_y2; int x1 = Joystick.joy1_x1; int x2 = Joystick.joy1_x2; // Makes joystick positions easier to use
+		int y1 = joystick.joy1_y1; int y2 = joystick.joy1_y2; int x1 = joystick.joy1_x1; int x2 = joystick.joy1_x2; // Makes joystick positions easier to use
 		movement(x1, y1, x2, y2); // Pass the joystick coordinates to movement method
 
 		// The whlie loop doesnt need to be THAT fast... and it makes processing faster
-		wait1MSec(1);
+		wait1Msec(1);
 	}
 
 }
