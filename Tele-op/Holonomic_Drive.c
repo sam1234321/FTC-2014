@@ -51,36 +51,6 @@ void movement(int x1, int y1, int x2, int y2){
 	}
 }
 
-//same movement methods, but with parameters for power instead of joystick position
-void movementPower(int topRightP, int topLeftP, int bottomRightP, int bottomLeftP){
-
-		motor[topRight] = topRightP;	// ATTENTION!!!! THIS IS NOT WORKING CODE! THIS IS JUST FOR EASIER CODING WHEN THE PROTOTYPE IS DONE! SAME FOR CODE BELOW!
-		motor[topLeft] = topLeftP;
-		motor[bottomRight] = bottomRightP;
-		motor[bottomLeft] = bottomLeftP;
-}
-
-// Autonomous Methods go here
-
-void moveForward(int power){
-	movementPower(100, 100, 100, 100);
-}
-
-void stopMotors(bool stopTopRight, bool stopTopLeft, bool stopBottomRight, bool stopBottomLeft){
-	if(stopTopRight){
-		motor[topRight] = 0;
-	}
-	if(stopTopLeft){
-		motor[topLeft] = 0;
-	}
-	if(stopBottomRight){
-		motor[bottomRight] = 0;
-	}
-	if(stopBottomLeft){
-		motor[bottomLeft] = 0;
-	}
-}
-
 task main(){
 	initializeRobot();
 
