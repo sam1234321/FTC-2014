@@ -11,23 +11,31 @@
 
 void initializeRobot()
 {
+	return;
 	// Place motor positioning here
 }
 
-void movement(int topLeft, int topRight, int bottomLeft, int bottomRight){
-	motor	
+void movement(int topLeftP, int topRightP, int bottomLeftP, int bottomRightP){
+	motor[topLeft] = topLeftP;
+	motor[topRight] = topRightP;
+	motor[bottomLeft] = bottomLeftP;
+	motor[bottomRight]  = bottomRightP;
 }
 
 task main()
 {
   initializeRobot();
 
-  waitForStart(); // Wait for the beginning of autonomous phase.
+  //waitForStart(); // Wait for the beginning of autonomous phase.
+
+	movement(100, 100, 100, 100);
+	wait1Msec(2000);
+	movement(0, 0, 0, 0);
+
 
   while (true)
   {
-      
+
   }
 
 }
-
