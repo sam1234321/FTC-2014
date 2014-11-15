@@ -34,13 +34,33 @@ void moveTime(int topLeftP, int topRightP, int bottomLeftP, int bottomRightP, in
 	movement(0, 0, 0, 0);
 }
 
+void moveForwardTime(int power, int time){
+	moveTime(power, power, power, power, time);
+}
+
+void moveLeftTime(int power, int time){
+	moveTime(-power, power, power, -power, time);
+}
+
+void moveRightTime(int power, int time){
+	moveTime(power, -power, -power, power, time);
+}
+
+void moveBackwardTime(int power, int time){
+	moveTime(-power, -power, -power, -power, time);
+}
+
 task main()
 {
 	initializeRobot();
 
 	waitForStart(); // Wait for the beginning of autonomous phase.
 
-	moveTime(100, 100, 100, 100, 2000);
+	moveForwardTime(2500, 100);
+
+	moveRightTime(100, 1000);
+
+	moveBackwardTime(100, 2500);
 
 	while (true)
 	{
