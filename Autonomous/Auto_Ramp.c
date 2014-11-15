@@ -40,7 +40,7 @@ task main()
 
 	waitForStart(); // Wait for the beginning of autonomous phase.
 
-	moveTime(100, 100, 100, 100, 2000);
+	moveTime(100, 100, 100, 100, 2000); //goes forward for 2 secs
 
 	while (true)
 	{
