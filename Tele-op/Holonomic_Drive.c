@@ -18,6 +18,9 @@ int threshold; // the "dead zone" of the controller joysticks
 // All constant variables go here
 const int FULLSPEED = 100; // a constant value for the maximum speed for the robot. Since this code doesn't have a precision mode, (yet), we only need fullspeed as a speed constant. Not neseccary at the moment, but will be later.
 const int PRECISIONMODESPEED = 10; // for precise movement!
+const int POWERSPEED = 20; // For moving kinda slow!
+
+const int ARMSPEED = 20;
 
 //Initialize Variables
 void initializeVariables(){
@@ -34,7 +37,9 @@ void initializeRobot(){
 void movement(int x1, int y1, int x2, int y2){
 	if(joy1Btn(8) == 1){
 		speed = PRECISIONMODESPEED;
-	} else {
+	} else if(joy1Btn(7)){
+		speed = POWERSPEED;
+	}else {
 		speed = FULLSPEED;
 	}
 	// we are only using x2 and y2 for the actual movement, x1 and y1 are for rotation. Optional, but reccomended and usef	ul.
@@ -51,7 +56,17 @@ void movement(int x1, int y1, int x2, int y2){
 	}
 }
 
+void armMovement(int x1, int y1, int x2, int y2){
+	if(abs(y2) > threshold){
+		motor[armMotor] = ;
+	}
+}
+
+
 task main(){
+
+	waitForStart();
+
 	initializeRobot();
 
 	while(true){
