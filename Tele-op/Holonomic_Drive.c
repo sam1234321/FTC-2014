@@ -20,7 +20,7 @@ const int FULLSPEED = 100; // a constant value for the maximum speed for the rob
 const int PRECISIONMODESPEED = 10; // for precise movement!
 const int POWERSPEED = 20; // For moving kinda slow!
 
-const int ARMSPEED = 20;
+const int ARMSPEED = 20; // the default speed for which the arm will move
 
 //Initialize Variables
 void initializeVariables(){
@@ -58,7 +58,7 @@ void movement(int x1, int y1, int x2, int y2){
 
 void armMovement(int x1, int y1, int x2, int y2){
 	if(abs(y2) > threshold){
-		motor[armMotor] = ;
+		motor[armMotor] = ((y2 * ARMSPEED) / 127);
 	}
 }
 
