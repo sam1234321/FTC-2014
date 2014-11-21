@@ -20,7 +20,7 @@ const int FULLSPEED = 100; // a constant value for the maximum speed for the rob
 const int PRECISIONMODESPEED = 10; // for precise movement!
 const int POWERSPEED = 20; // For moving kinda slow!
 
-const int ARMSPEED = 20; // the default speed for which the arm will move
+const int ARMSPEED = 20;
 
 //Initialize Variables
 void initializeVariables(){
@@ -58,10 +58,19 @@ void movement(int x1, int y1, int x2, int y2){
 
 void armMovement(int x1, int y1, int x2, int y2){
 	if(abs(y2) > threshold){
-		motor[armMotor] = ((y2 * ARMSPEED) / 127);
+		motor[armMotor] = ;
 	}
 }
 
+void gripperMovement(int close, int open){    //gripper programing, button a is 2, b is 3
+	if(joy2Btn(2) == 1, joy2Btn(3) == 0){
+		servo[gripper] = 15;
+	if(joy2Btn(2) == 0, joy2Btn(3) == 1){
+		servo[gripper] = -15;
+	}
+	}
+
+}
 
 task main(){
 
